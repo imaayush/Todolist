@@ -9,6 +9,13 @@
 <script src="js/jquery-ui.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
+ function edit1()
+ {
+ var m1=document.getElementById('myt').value;
+ var m2=document.getElementById('myd').value;
+ editdiv.innerHTML =m1+"<br>Deadline : "+m2;
+   
+ }
   function addList(myTable) {
  
             var table = document.getElementById(myTable);
@@ -25,6 +32,8 @@
 		 cell1.appendChild(linebreak);
 		 var c = document.createTextNode(date1);
 		 cell1.appendChild(c);
+		 
+		 
         
  var cell2 = row.insertCell(1);
             var element2 = document.createElement("input");
@@ -32,7 +41,12 @@
             element2.name="chkbox[]";
             cell2.appendChild(element2);
 document.getElementById('mytask').value=" ";
-
+var cell3 = row.insertCell(2);
+            var b = document.createElement('button');
+		 var t = document.createTextNode("Edit"); 
+		 b.onclick = function() { cell1.innerHTML = "<div id='editdiv'><input  type='text' class='form-control' placeholder='My Task' id='myt' required > <br><input class='form-control' type='date' id='myd' required> <br> <input  type='button' class='btn btn-primary' value='save' onclick='edit1()' /></div>"; }
+         b.appendChild(t);        
+		 cell3.appendChild(b);
        }
  
         function deleteList(myTable) {
@@ -66,16 +80,16 @@ document.getElementById('mytask').value=" ";
      
 	 
 	 <div class="form-group">
-    <input class="form-control" type="text" placeholder="My Task" id="mytask"/>
+    <input class="form-control" type="text" placeholder="My Task" id="mytask" required/>
 	</div>
 	
 	<div class="form-group">
-    <input class="form-control" type="date" placeholder="Due Date (dd/mm/yyyy)" id="duedate" />
+    <input class="form-control" type="date" placeholder="Due Date (dd/mm/yyyy)" id="duedate" required />
 	</div>
 	
 	<div class="form-group">
-    <input  type="button" class="btn btn-primary" value="Add Task" onclick="addList('ToDoListTable')" />
-	 <input  type="button" class="btn btn-primary" value="Delete Task" onclick="deleteList('ToDoListTable')" />
+    <input  type="button" class="btn btn-primary" value="Add Task" onclick="addList('ToDoListTable')"  />
+	 <input  type="button" class="btn btn-primary" value="Delete Task" onclick="deleteList('ToDoListTable')"  />
 	</div>
   <table id="ToDoListTable" class="table table-striped" width="350px" border="1">
      
