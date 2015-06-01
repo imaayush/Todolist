@@ -16,12 +16,13 @@ function save1(src)
   var title = sherlocked.eventTitle;    // 'Homework 5 due'
   var startDate = sherlocked.startDate; // Date object pointing to next monday at 3pm
   var endDate = sherlocked.endDate;
-  //var temp1=endDate.split("GMT");
- // var d = Date.parse(temp1[0]);
-  //alert(temp1[0]);
   var newtime = new  Date().getTime();
-  var lefttime= endDate.getTime()-newtime;
-  lefttime=lefttime/(60*60*1000);
+  var lefttime = 50;
+  if(endDate!=null)
+  {
+    var lefttime= endDate.getTime()-newtime;
+    lefttime=lefttime/(60*60*1000);
+  }	
   var validated = sherlocked.validated;
   if(title==''||title==null)
   {
@@ -64,8 +65,12 @@ function addList()
   var endDate = sherlocked.endDate;
   var validated = sherlocked.validated;
   var newtime = new  Date().getTime();
-  var lefttime= endDate.getTime()-newtime;
-  lefttime=lefttime/(60*60*1000);
+  var lefttime = 50;
+  if(endDate!=null)
+  {
+    var lefttime= endDate.getTime()-newtime;
+    lefttime=lefttime/(60*60*1000);
+  }	
   if(title==''||title==null)
   {
     alert("Invalid input ");
