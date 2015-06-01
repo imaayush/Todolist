@@ -16,6 +16,12 @@ function save1(src)
   var title = sherlocked.eventTitle;    // 'Homework 5 due'
   var startDate = sherlocked.startDate; // Date object pointing to next monday at 3pm
   var endDate = sherlocked.endDate;
+  //var temp1=endDate.split("GMT");
+ // var d = Date.parse(temp1[0]);
+  //alert(temp1[0]);
+  var newtime = new  Date().getTime();
+  var lefttime= endDate.getTime()-newtime;
+  lefttime=lefttime/(60*60*1000);
   var validated = sherlocked.validated;
   if(title==''||title==null)
   {
@@ -30,7 +36,21 @@ function save1(src)
   var table = $('#ToDoListTable')[0];
   var oRow = src.parentElement.parentElement; 
   var row = table.rows[oRow.rowIndex];
-  row.cells[0].innerHTML = title+"<br>Starts :"+startDate+"<br>Ends :"+endDate+"<br> ";
+  if( lefttime<24)
+  {
+    
+    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+    row.cells[0].style.color = 'red'
+  }else if(lefttime>24&&lefttime<48)
+  {
+	
+    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+    row.cells[0].style.color = 'orange'
+  }else
+  { 
+    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+  }
+
 }
 function addList() 
 {
@@ -43,6 +63,9 @@ function addList()
   var startDate = sherlocked.startDate; // Date object pointing to next monday at 3pm
   var endDate = sherlocked.endDate;
   var validated = sherlocked.validated;
+  var newtime = new  Date().getTime();
+  var lefttime= endDate.getTime()-newtime;
+  lefttime=lefttime/(60*60*1000);
   if(title==''||title==null)
   {
     alert("Invalid input ");
@@ -53,9 +76,21 @@ function addList()
     alert("Invalid input ");
 	return false;
   }
-  var cell1 = row.insertCell(0);
-  cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
-
+  if( lefttime<24)
+  {
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+    cell1.style.color = 'red'
+  }else if(lefttime>24&&lefttime<48)
+  {
+	var cell1 = row.insertCell(0);
+    cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+    cell1.style.color = 'orange'
+  }else
+  { 
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+  }
   var cell2 = row.insertCell(1);
   cell2.innerHTML="<input type='button' class='btn btn-primary' value='Edit' onclick='edit1(this);'>";
     
