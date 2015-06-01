@@ -8,85 +8,13 @@
 <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
 </head>
-<script type="text/javascript">
-function edit1(src)
-{
- 
-    var table = document.getElementById('ToDoListTable');
-    var oRow = src.parentElement.parentElement; 
-    var row = table.rows[oRow.rowIndex];
-    var old1= row.cells[0].childNodes[0].nodeValue;
-    var oldd1=row.cells[0].childNodes[2].nodeValue;
-    var tc=oldd1.split("Deadline :");
-    // alert(tc[1]);
-    row.cells[0].innerHTML="<input  type='text' class='form-control'  id='myt' name='ts' > <br><input class='form-control' type='text' id='myd' > <br> <input  type='button' class='btn btn-primary' value='save' onclick='save1(this);' />";
-    $('#myt').attr('value',old1);
-    $('#myd').attr('value',tc[1]);
-   
-}
-function save1(src){
-    var m1=document.getElementById('myt').value;
-    var m2=document.getElementById('myd').value;
- 
-	if(m1==null||m1==""){
-		alert("Enter Task");
-		return false;}
-	if(m2==null||m2==""){
-		alert("Enter Due Date");
-		return false;}
-	var table = document.getElementById('ToDoListTable');
-    var oRow = src.parentElement.parentElement; 
-    var row = table.rows[oRow.rowIndex];
-    row.cells[0].innerHTML =m1+"<br>Deadline : "+m2;
-}
-function addList(myTable) {
- 
-    var table = document.getElementById(myTable);
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
-    var task1=document.getElementById('mytask').value;
-    var date1="Deadline : "+document.getElementById('duedate').value;
-    var te =document.getElementById('duedate').value
-			
-	if(task1==null||task1==""){
-		alert("Enter Task");
-		return false;}
-	if(te==null||te==""){
-		alert("Enter Due Date");
-		return false;}
-			
-    var cell1 = row.insertCell(0); 
-		;
-         var element1 = document.createTextNode(task1);
-         cell1.appendChild(element1);
-		 var linebreak = document.createElement('br');
-		 cell1.appendChild(linebreak);
-		 var c = document.createTextNode(date1);
-		 cell1.appendChild(c);
-
-    var cell2 = row.insertCell(1);
-       
-         cell2.innerHTML="<input type='button' class='btn btn-primary' value='Edit' onclick='edit1(this);'>";
-    var cell3 = row.insertCell(2);
-         
-        cell3.innerHTML="<input type='button' class='btn btn-primary'value='Delete' onclick='delete1(this);'>";
-    document.getElementById('mytask').value="";
-	document.getElementById('duedate').value="mm/dd/yyyy";
-}
-function delete1(src){
-//alert(src.value);
-var table = document.getElementById('ToDoListTable');
-var oRow = src.parentElement.parentElement; 
-table.deleteRow(oRow.rowIndex);
-}
-        
-</script>
+<script type="text/javascript" src="js/main1.js"></script>
        
 <body>
   <nav class="navbar navbar-inverse">
       <div  style="color:white; font-size:18px; margin-top:10px; margin-left:10px;">
       To Do List
-       </div>
+      </div>
   </nav>
   <div class="panel panel-primary" style="width:50%; margin-left:25%;">
       <div class="panel-heading">Add a Task</div>
@@ -114,7 +42,7 @@ table.deleteRow(oRow.rowIndex);
       </div>
 
 
-</div>
+    </div>
 
 </body>
 
