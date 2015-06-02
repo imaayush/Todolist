@@ -88,14 +88,15 @@ function filter(src)
   var table = $('#ToDoListTable')[0];
   var newtime = new  Date().getTime();
   var rowCount = table.rows.length;
+  
   if (one.checked==true) 
   {          
     for(var i=0; i<rowCount; i++)
-	{
+	{ var duetime =null;
       var row = table.rows[i];
-      var duetime = row.cells[0].childNodes[4].nodeValue;
-		  
-      if(duetime!=null )
+      duetime = row.cells[0].childNodes[4].nodeValue;
+      
+      if(duetime.localeCompare("Ends :null")==1)
       { 
         var sherlocked = Sherlock.parse(duetime);
         var endDate = sherlocked.startDate;
@@ -117,7 +118,7 @@ function filter(src)
 	{
 	  var row = table.rows[i];
 	  var duetime = row.cells[0].childNodes[4].nodeValue;
-	  if(duetime!=null )
+	  if(duetime.localeCompare("Ends :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
 		var endDate = sherlocked.startDate;
@@ -140,7 +141,7 @@ function filter(src)
 	{
       var row = table.rows[i];
       var duetime = row.cells[0].childNodes[4].nodeValue;
-      if(duetime!=null )
+      if(duetime.localeCompare("Ends :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
 	    var endDate = sherlocked.startDate;
@@ -162,7 +163,7 @@ function filter(src)
 	{
 	  var row = table.rows[i];
 	  var duetime = row.cells[0].childNodes[4].nodeValue;
-	  if(duetime!=null )
+	  if(duetime.localeCompare("Ends :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
 		var endDate = sherlocked.startDate;
