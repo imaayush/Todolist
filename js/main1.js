@@ -17,12 +17,7 @@ function save1(src)
   var startDate = sherlocked.startDate; // Date object pointing to next monday at 3pm
   var endDate = sherlocked.endDate;
   var newtime = new  Date().getTime();
-  var lefttime = 50;
-  if(endDate!=null)
-  {
-    var lefttime= endDate.getTime()-newtime;
-    lefttime=lefttime/(60*60*1000);
-  }	
+ 
   var validated = sherlocked.validated;
   if(title==''||title==null)
   {
@@ -37,20 +32,8 @@ function save1(src)
   var table = $('#ToDoListTable')[0];
   var oRow = src.parentElement.parentElement; 
   var row = table.rows[oRow.rowIndex];
-  if( lefttime<24)
-  {
-    
-    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
-    row.cells[0].style.color = 'red'
-  }else if(lefttime>24&&lefttime<48)
-  {
-	
-    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
-    row.cells[0].style.color = 'orange'
-  }else
-  { 
-    row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
-  }
+  row.cells[0].innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate+"<br><input type='button' class='btn btn-primary'value='Task Completed' onclick='status_change(this);'>";
+ 
 
 }
 function addList() 
@@ -80,7 +63,7 @@ function addList()
  
   
   var cell1 = row.insertCell(0);
-  cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate;
+  cell1.innerHTML=title+"<br>Starts :"+startDate+"<br>Ends :"+endDate+"<br><input type='button' class='btn btn-primary'value='Task Completed' onclick='status_change(this);'>";
   
   var cell2 = row.insertCell(1);
   cell2.innerHTML="<input type='button' class='btn btn-primary' value='Edit' onclick='edit1(this);'>";
@@ -197,4 +180,18 @@ function filter(src)
 		 
 	}
   }
+}
+function status_change(src)
+{
+  var table = $('#ToDoListTable')[0];
+  var oRow = src.parentElement.parentElement; 
+  var row = table.rows[oRow.rowIndex];
+  var title1= row.cells[0].childNodes[0].nodeValue;
+  table.deleteRow(oRow.rowIndex);
+  var table1 = $('#CompleteTask')[0];
+  var rowCount1 = table1.rows.length;
+  var row1 = table1.insertRow(rowCount1);
+  var cell1 = row1.insertCell(0);
+  var newtime = new  Date();
+  cell1.innerHTML=title1+"<br>Completed on :" + newtime;
 }
