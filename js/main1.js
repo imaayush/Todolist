@@ -94,15 +94,15 @@ function filter(src)
     for(var i=0; i<rowCount; i++)
 	{ var duetime =null;
       var row = table.rows[i];
-      duetime = row.cells[0].childNodes[4].nodeValue;
-      
-      if(duetime.localeCompare("Ends :null")==1)
+      duetime = row.cells[0].childNodes[2].nodeValue;
+      //alert(duetime);
+      if(duetime.localeCompare("Starts :null")==1)
       { 
         var sherlocked = Sherlock.parse(duetime);
-        var endDate = sherlocked.startDate;
-	    var lefttime= endDate.getTime()-newtime;
+        var startTime = sherlocked.startDate;
+	    var lefttime= startTime.getTime()-newtime;
         lefttime=lefttime/(60*60*1000);
-	    if(lefttime<24)
+	    if(lefttime>-24 ||lefttime<24)
 	    {
 	      row.cells[0].style.color = 'red';
 	    }else
@@ -117,14 +117,14 @@ function filter(src)
     for(var i=0; i<rowCount; i++)
 	{
 	  var row = table.rows[i];
-	  var duetime = row.cells[0].childNodes[4].nodeValue;
-	  if(duetime.localeCompare("Ends :null")==1 )
+	  var duetime = row.cells[0].childNodes[2].nodeValue;
+	  if(duetime.localeCompare("Starts :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
-		var endDate = sherlocked.startDate;
-	    var lefttime= endDate.getTime()-newtime;
+		var startTime = sherlocked.startDate;
+	    var lefttime= startTime.getTime()-newtime;
         lefttime=lefttime/(60*60*1000);
-	    if(lefttime<24)
+	    if(lefttime>-24||lefttime<24)
 		{
 		  row.cells[0].style.color = 'black';
 		}else
@@ -140,12 +140,12 @@ function filter(src)
     for(var i=0; i<rowCount; i++)
 	{
       var row = table.rows[i];
-      var duetime = row.cells[0].childNodes[4].nodeValue;
-      if(duetime.localeCompare("Ends :null")==1 )
+      var duetime = row.cells[0].childNodes[2].nodeValue;
+      if(duetime.localeCompare("Starts :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
-	    var endDate = sherlocked.startDate;
-	    var lefttime= endDate.getTime()-newtime;
+	    var startTime = sherlocked.startDate;
+	    var lefttime= startTime.getTime()-newtime;
         lefttime=lefttime/(60*60*1000);
 	    if(lefttime<48&&lefttime>24)
 	    {
@@ -162,12 +162,12 @@ function filter(src)
     for(var i=0; i<rowCount; i++)
 	{
 	  var row = table.rows[i];
-	  var duetime = row.cells[0].childNodes[4].nodeValue;
-	  if(duetime.localeCompare("Ends :null")==1 )
+	  var duetime = row.cells[0].childNodes[2].nodeValue;
+	  if(duetime.localeCompare("Starts :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
-		var endDate = sherlocked.startDate;
-	    var lefttime= endDate.getTime()-newtime;
+		var startTime = sherlocked.startDate;
+	    var lefttime= startTime.getTime()-newtime;
         lefttime=lefttime/(60*60*1000);
 	    if(lefttime<48&&lefttime>24)
 		{
