@@ -100,19 +100,20 @@ function filter(src)
       { 
         var sherlocked = Sherlock.parse(duetime);
         var startTime = sherlocked.startDate;
-	    var lefttime= startTime.getTime()-newtime;
+		var lefttime= startTime.getTime()-newtime;
         lefttime=lefttime/(60*60*1000);
+
 	    if(lefttime>-24 ||lefttime<24)
 	    {
 	      row.cells[0].style.color = 'red';
-	    }else
+	    } else
 	    {
 	      //row.style.visibility ='hidden';
 	    }
       }	
 		 
 	}
-  }else if(one.checked==false)
+  } else if(one.checked==false)
   {
     for(var i=0; i<rowCount; i++)
 	{
@@ -123,6 +124,7 @@ function filter(src)
         var sherlocked = Sherlock.parse(duetime);
 		var startTime = sherlocked.startDate;
 	    var lefttime= startTime.getTime()-newtime;
+        debugger
         lefttime=lefttime/(60*60*1000);
 	    if(lefttime>-24||lefttime<24)
 		{
@@ -145,9 +147,11 @@ function filter(src)
       { 
         var sherlocked = Sherlock.parse(duetime);
 	    var startTime = sherlocked.startDate;
-	    var lefttime= startTime.getTime()-newtime;
-        lefttime=lefttime/(60*60*1000);
-	    if(lefttime<48&&lefttime>24)
+	    var end_of_today = new Date.now()
+	    end_of_today.setHours(23,59,59,999);
+	    var beginning_of_today = new Date.now()
+	    beginning_of_today.setHours(0,0,0,0)
+	    if(startTime >= beginning_of_today  && startTime <= end_of_today)
 	    {
 	      row.cells[0].style.color = 'blue';
 	    }else
@@ -166,18 +170,18 @@ function filter(src)
 	  if(duetime.localeCompare("Starts :null")==1 )
       { 
         var sherlocked = Sherlock.parse(duetime);
-		var startTime = sherlocked.startDate;
-	    var lefttime= startTime.getTime()-newtime;
-        lefttime=lefttime/(60*60*1000);
-	    if(lefttime<48&&lefttime>24)
-		{
-	      row.cells[0].style.color = 'black';
-	    }else
-		{
-		  //row.style.visibility ='hidden';
+		    var startTime = sherlocked.startDate;
+        var end_of_tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+	      end_of_tomorrow.setHours(23,59,59,999);
+        var beginning_of_tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+	      beginning_of_tomorrow.setHours(0,0,0,0)
+        if(startTime >= beginning_of_tomorrow  && startTime <= end_of_tomorrow)
+          row.cells[0].style.color = 'black';
+	     } else
+			 {
+		    //row.style.visibility ='hidden';
 				 
-		}
-       }	
+			 }
 		 
 	}
   }
