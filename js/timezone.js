@@ -5,4 +5,5 @@ function convert_In_Utc()
   mytime.setHours(mytime.getHours() + parseInt((difference/60)));
   mytime.setMinutes(mytime.getMinutes() + difference%60);
   document.write(mytime.toLocaleString());
+  document.write("<br> difference :"+difference+" min");
 }
