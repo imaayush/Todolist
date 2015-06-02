@@ -2,11 +2,11 @@
 <html>
 <head>
 <title>To Do List</title>
-<link type="text/css" rel="stylesheet" href="css/jquery-ui.css">
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="js/jquery-ui.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/main1.js"></script>
 <script type="text/javascript" src="js/sherlock.js"></script>
 <script type="text/javascript" src="js/watson.js"></script>
@@ -30,6 +30,15 @@
 	       <div class="form-group">
            <input  type="button" class="btn btn-primary" value="Add Task" onclick="addList()"  />
 	       </div>
+		   <div class="form-group">
+		   <div class="col-md-1">
+		    <input type="checkbox" class="radio" name="one" id="filter_one" onclick="filter(this)"></div>
+			<label>Ends Today</label>
+		   </div>
+		   <div class="form-group">
+		   <div class="col-md-1"><input type="checkbox" class="radio"  id="filter_two" name="two" onclick="filter(this)" /></div>
+		   <label>Ends Tomorrow </label>
+		   </div>
 		   <div class="panel panel-default"> 
 	           <div class="panel-heading clearfix">
                <h3 class="panel-title pull-left">To Do List</h3>
